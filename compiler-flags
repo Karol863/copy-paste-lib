@@ -1,0 +1,5 @@
+RELEASE:
+cc -o program src/program.c -march=native -O2 -flto -s -D_FORTIFY_SOURCE=1
+
+DEGUG:
+cc -o program src/proram.c -std=c99 -Wall -Wextra -Wpedantic -g3 -O0 -fsanitize=address,undefined
