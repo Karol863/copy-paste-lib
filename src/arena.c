@@ -12,7 +12,7 @@ void arena_init(Arena *a) {
 }
 
 void *arena_alloc(Arena *a, isize size) {
-    ASSERT(size >= 0);
+    ASSERT(size > 0);
     if (a->offset + size >= a->commited) {
         isize mem_to_commit = (size + (PAGE_SIZE - 1)) & ~(PAGE_SIZE - 1);
         ASSERT(mem_to_commit > 0);
