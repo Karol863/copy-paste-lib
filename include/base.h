@@ -25,7 +25,7 @@ typedef intptr_t sptr;
 #ifdef __GNUC__
     #define ASSERT(X) ((X) ? (void)0 : __builtin_trap())
 #else
-    #define ASSERT(X) ((void)0)
+    #define ASSERT(X) ((X) ? (void)0 : (void)(*(volatile int *)0 = 0))
 #endif
 
 #if !defined(bool) && !defined(__cplusplus) && __STDC_VERSION__ <= 201710L
@@ -45,8 +45,8 @@ typedef struct {
 #define UNUSED()            ((void)0)
 #define SIZEOF(X)           ((isize)sizeof(X))
 #define ARRLEN(X)           (SIZEOF(X) / SIZEOF(0[X]))
-#define MIN(A, B)           (( (A) < (B) ) ? (A) : (B))
-#define MAX(A, B)           (( (A) > (B) ) ? (A) : (B))
+#define MIN(A, B)           (((A) < (B) ) ? (A) : (B))
+#define MAX(A, B)           (((A) > (B) ) ? (A) : (B))
 #define CLAMP(V, LO, HI)    (((V) < (LO)) ? (LO) : ((V) > (HI)) ? (HI) : (V))
 
 #endif // BASE_H
