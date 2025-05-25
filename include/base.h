@@ -42,7 +42,7 @@ typedef struct {
 } String;
 
 #define STR(X)              (String){(u8*)X, SIZEOF(X)-1}
-#define UNUSED()            ((void)0)
+#define UNUSED(X)           (void)(X)
 #define SIZEOF(X)           ((isize)sizeof(X))
 #define ARRLEN(X)           (SIZEOF(X) / SIZEOF(0[X]))
 #define MIN(A, B)           (((A) < (B) ) ? (A) : (B))
